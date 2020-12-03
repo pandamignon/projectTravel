@@ -131,5 +131,27 @@
 <script src="js/main.js"></script>
 <script>if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){$(window).stellar();}</script>
 
+<script>
+    $("#form1").submit(function (event) {
+        var formData = {
+            'user': $("#user").val(),
+            'pwd': $("#pwd").val(),
+
+        };
+        console.log(JSON.stringify(formData));
+        $.ajax({
+            type: "POST",
+            url: "/login/submit",
+            data: formData,
+            dataType: 'json',
+            encoder: true
+        }).done(function (data) {
+            alert("data -> "+JSON.stringify(data));
+            //window.location.href = "/login";
+        });
+        event.preventDefault();
+    })
+</script>
+
 </body>
 </html>

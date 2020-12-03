@@ -15,15 +15,7 @@ router.get('/', function(req, res, next) {
   res.render('register', {  });
 });
 
-router.get('/test', function (req, res, next) {
-  con.connect(function (err) {
-    if (err) throw err;
-    con.query("SELECT * FROM user", function (err, result, fields) {
-      if (err) throw err;
-      console.log(result);
-    });
-  });
-});
+
 
 
 
