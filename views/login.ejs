@@ -138,7 +138,7 @@
             'pwd': $("#pwd").val(),
 
         };
-        console.log(JSON.stringify(formData));
+        //console.log(JSON.stringify(formData));
         $.ajax({
             type: "POST",
             url: "/login/submit",
@@ -146,8 +146,8 @@
             dataType: 'json',
             encoder: true
         }).done(function (data) {
-            alert("data -> "+JSON.stringify(data));
-            //window.location.href = "/login";
+            //alert("data -> "+JSON.stringify(data));
+            window.location.href = "/";
         });
         event.preventDefault();
     })

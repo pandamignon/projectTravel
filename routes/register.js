@@ -1,23 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
-
-var con = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  password: "",
-  port: "3306",
-  database: "travel"
-});
+var con = require('../lib/db')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('register', {  });
 });
-
-
-
-
 
 router.post('/submit',function(req,res,next){
   var user = req.body.user;
