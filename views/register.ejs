@@ -182,7 +182,7 @@
         </div>
         <div class="form-group">
             <label for="email">E-mail:</label>
-            <input class="form-control" type="text" id="email" name="email" maxlength="50" required>
+            <input class="form-control" type="email" id="email" name="email" maxlength="50" required>
         </div>
         <div class="form-group">
             <label for="tel">Telephone Number:</label>
@@ -223,11 +223,13 @@
 			var formData = {
                 'user':$("#user").val(),
                 'pwd': $("#pwd").val(),
+                'psw-repeat':$("#psw-repeat").val(),
 				'name':$("#name").val(),
 				'lname':$("#lname").val(),
 				'email':$("#email").val(),
 				'tel':$("#tel").val()
             };
+            
             //console.log(JSON.stringify(formData));
 			$.ajax({
 				type:"POST",
@@ -239,7 +241,7 @@
                 window.location.href = "/login";
 			});
 			event.preventDefault();
-		})
+        });
 	</script>
 
 

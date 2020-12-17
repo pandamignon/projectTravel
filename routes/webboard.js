@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var con = require('../lib/db')
 /* GET home page. */
-router.get('/viewpost/:id/', function (req, res, next) {
+router.get('/view/:id/', function (req, res, next) {
     var id = Number(req.params.id);
     //question
     var sql = "SELECT * FROM questions WHERE id= "+id+" ";
