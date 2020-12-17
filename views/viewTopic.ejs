@@ -11,18 +11,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TH travel</title>
-    <link href="css/media_query.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/media_query.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="css/animate.css" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css"/>
-    <link href="css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/owl.theme.default.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
-    <link href="css/style_1.css" rel="stylesheet" type="text/css"/>
+    <link href="../css/style_1.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
-    <script src="js/modernizr-3.5.0.min.js"></script>
+    <script src="../js/modernizr-3.5.0.min.js"></script>
     <style type="text/css">
         a {
             text-decoration: none;
@@ -124,27 +124,121 @@
     </div>
 </div>
 <a href="/webboard/addTopic">ตั้งกระทู้ คลิกที่นี้</a>
-<table border="0" cellpadding="0" cellspacing="0" align="center" class="table"  id="topic">
-    <thead>
-        <tr>
-            <th style="width: 30px;">ลำดับ</th>
-            <th>หัวข้อกระทู้</th>
-            <th style="width: 50px;">อ่าน</th>
-            <th style="width: 50px;">ตอบ</th>
-            <th style="width: 150px;">วันที่ตั้งกระทู้</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    </tbody>
+<table width="500" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#000000">
+    <tr>
+        <td>
+            <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                <tr>
+                    <td colspan="3" bgcolor="#000000">
+                        <b style="color: #FFFFFF;">
+                            <?php echo $result['topic']; ?>
+                        </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <?php echo nl2br($result['detail']); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>ชื่อผู้ตั้งกระทู้ :</strong>
+                        <?php echo $result['name']; ?>
+                        <strong>อีเมล์ผู้ตั้งกระทู้ :</strong>
+                        <?php echo $result['email']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">
+                        <strong>วันที่ตั้งกระทู้ :</strong>
+                        <?php echo $result['created']; ?>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
 </table>
+<?php
+ if ($rows_a > 0) {
+ $i = 1;
+ while ($result_a = mysql_fetch_assoc($query_a)) {
+ ?>
+<table width="500" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#000000" style="margin-top:10px;">
+    <tr>
+        <td>
+            <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                <tr>
+                    <td width="30%" style="text-align: right;"><strong>ชื่อผู้ตอบ</strong></td>
+                    <td width="70%">
+                        <?php echo $result_a['name']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" style="text-align: right;"><strong>อีเมล์</strong></td>
+                    <td>
+                        <?php echo $result_a['email']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;"><strong>รายละเอียดคำตอบ</strong></td>
+                    <td>
+                        <?php echo nl2br($result_a['detail']); ?>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<?php
+ }
+ } else {
+ ?>
+<p style="text-align: center;color: red;">ไม่มีคำตอบ</p>
+<?php
+ }
+ ?>
+
+<form id="add_answer" name="add_answer" method="post" action="add_answer.php">
+    <table width="500" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="blue"
+        style="margin-top:15px;">
+        <tr>
+            <td>
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <td colspan="3" bgcolor="blue"><b style="color: #FFFFFF;">ตอบคำถาม</b> </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" style="text-align: right;"><strong>รายละเอียด</strong></td>
+                        <td><textarea name="detail" cols="50" rows="5" id="detail"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><strong>ชื่อผู้ตอบ</strong></td>
+                        <td><input name="name" type="text" id="name" size="50" /></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right;"><strong>อีเมล์ผู้ตอบ</strong></td>
+                        <td><input name="email" type="text" id="email" size="50" /></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <input type="submit" name="submit" value="บันทึกข้อมูล" />
+                            <input type="button" name="Submit2" value="กลับ" onclick="history.back();" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <input type="hidden" name="id" value="<?php echo $result['id']; ?>">
+</form>
 
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
+<script src="../js/owl.carousel.min.js"></script>
 <!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
@@ -153,35 +247,33 @@
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="../js/jquery.waypoints.min.js"></script>
 <!-- Parallax -->
-<script src="js/jquery.stellar.min.js"></script>
+<script src="../js/jquery.stellar.min.js"></script>
 <!-- Main -->
-<script src="js/main.js"></script>
+<script src="../js/main.js"></script>
 <script>if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){$(window).stellar();}</script>
 <script>
-     $.get("/review/show",function (data, status) {
+     $.get("/review",function (data, status) {
         //alert("data->"+JSON.stringify(data)+",\n status->"+status);
         //Try to get tbody first with jquery children. works faster!
-         var tbody = $('#topic').children('tbody');
+         var tbody = $('#myTable').children('tbody');
 
          //Then if no tbody just select your table 
-         var table = tbody.length ? tbody : $('#myTable');
+         /*var table = tbody.length ? tbody : $('#myTable');
         var i = 0;
         var row;
-        var newRow="";
-        console.log(JSON.stringify(data));
         for(i=0;i<data.length;i++){
-            newRow += '<tr><td style="text-align: center;">'+(i+1);
-            newRow += '</td><td><a href="#">'+data[i].topic+'</a></td>';
-            newRow += '<td style="text-align: center;">' + data[i].view + '</a></td>';
-            newRow += '<td style="text-align: center;">' + data[i].reply + '</a></td>';
-            newRow += '<td style="text-align: center;">' + data[i].created + '</a></td>';
-            newRow += '</tr>';
-            console.log(newRow);
+            newRow = '<tr><td style="text-align: center;">',i+1;
+            newRow += '<td><a href="#">'+data.topic+'</a></td><td style="text-align: center;">';
+            //Add row
+            table.append('<tr><td>0</td><td>Hey</td><td>**********</td></tr>');
         }
-        //Add row
-         table.append(newRow);    
+        
+        
+        
+        //$("#obj").append(" " + data.UpdateDate);*/
+        
     });
 </script>
 </body>

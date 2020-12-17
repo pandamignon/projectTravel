@@ -10,7 +10,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Thanat Beam</title>
+    <title>TH Travel</title>
     <link href="css/media_query.css" rel="stylesheet" type="text/css"/>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -38,13 +38,16 @@
                 <!--<img src="images/logo.png" alt="img" class="fh5co_logo_width"/>-->
             </div>
             <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
-                <div class="text-center d-inline-block">
-                <li><a href="/login">Login</a></li>
+                <div class="text-center d-inline-block" id="divlogin">
+                <li><a href="/login">Log in</a></li>
                 </div>
-                <div class="text-center d-inline-block">
+                <div class="text-center d-inline-block" id="divregister">
                 <li><a href="/register">Register</a></li>
                 </div>
-                <div class="text-center d-inline-block">
+                <!--<div class="text-center d-inline-block" id="divlogout">
+                    <li><a href="/logout">Log out</a></li>
+                </div>-->
+                <!--<div class="text-center d-inline-block">
                     <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-search"></i></div></a>
                 </div>
                 <div class="text-center d-inline-block">
@@ -58,7 +61,7 @@
                 </div>
                 <div class="text-center d-inline-block">
                     <a href="https://fb.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
-                </div>
+                </div>-->
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -210,7 +213,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid pb-4 pt-5">
+<!--<div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
@@ -254,7 +257,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div class="clearfix"></div>
                 </div>
@@ -286,6 +289,19 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
-
+<script>
+    /*$(document).ready(function(data,status){
+        if(data==true){
+            console.log("data");
+            $("#divlogout").show();
+            $("#divlogin").hide();
+            $("#divregister").hide();
+        }else{
+            $("#divlogout").hide();
+            $("#divlogin").show();
+            $("#divregister").show();
+        }
+    });*/
+</script>
 </body>
 </html>
